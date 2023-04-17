@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+a,
+img {
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+}
+
 body {
   margin: 0;
   padding: 0;
