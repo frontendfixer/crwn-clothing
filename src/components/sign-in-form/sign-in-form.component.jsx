@@ -9,31 +9,28 @@ import {
 } from './../../utils/firebase/firebase.utils.js';
 import './sign-in-form.styles.scss';
 
-const defaultFormField = {
+const defaultFormFields = {
   email: '',
   password: '',
 };
 
 const SignInForm = () => {
-  const [formField, setFormField] = useState(defaultFormField);
-  const { email, password } = formField;
+  const [formFields, setFormFields] = useState(defaultFormFields);
+  const { email, password } = formFields;
 
-  const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
-  };
+  const signInWithGoogle = async () => await signInWithGooglePopup();
 
-  const resetFormField = () => {
-    setFormField(defaultFormField);
+  const resetFormFields = () => {
+    setFormFields(defaultFormFields);
   };
 
   const handelSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await signInUserEmailAndPassword(email, password);
-      console.log(response);
-      resetFormField();
+      const { user } = await signInUserEmailAndPassword(email, password);
+
+      resetFormFields();
     } catch (error) {
       switch (error.code) {
         case 'auth/wrong-password':
@@ -51,7 +48,7 @@ const SignInForm = () => {
 
   const handelChange = (event) => {
     const { name, value } = event.target;
-    setFormField({ ...formField, [name]: value });
+    setFormFields({ ...formFields, [name]: value });
   };
 
   return (
