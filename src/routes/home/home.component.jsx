@@ -1,8 +1,6 @@
-import Directory from './../../components/directory/directory.component';
+import DIRECTORY_ITEMS from '../../categories.json';
+import Directory from '../../components/directory/directory.component';
 
-const response = await fetch('./categories.json');
-const directoryItems = await response.json();
-
-const Home = () => <Directory directoryItems={directoryItems} />;
+const Home = () => <Directory directoryItems={DIRECTORY_ITEMS} />;
 
 export default Home;

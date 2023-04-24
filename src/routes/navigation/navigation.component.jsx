@@ -1,31 +1,30 @@
 import { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
-import { signOutUser } from './../../utils/firebase/firebase.utils.js';
-import { UserContext } from '../../context/user.context';
-import CrwnLogo from './../../assets/crown.svg';
-
 import './navigation.styles.scss';
+import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
+import { UserContext } from '../../context/user.context';
+import { signOutUser } from '../../utils/firebase/firebase.utils';
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
 
   return (
     <>
-      <div className='navigation'>
-        <Link className='logo-container' to='/'>
-          <img src={CrwnLogo} alt='crwn logo' className='logo' />
+      <div className="navigation">
+        <Link className="logo-container" to="/">
+          <CrwnLogo alt="crwn logo" className="logo" />
         </Link>
-        <div className='nav-links-container'>
-          <Link className='nav-link' to='/shop'>
+        <div className="nav-links-container">
+          <Link className="nav-link" to="/shop">
             Shop
           </Link>
           {currentUser ? (
-            <span className='nav-link' onClick={signOutUser}>
+            <span className="nav-link" onClick={signOutUser} role="button">
               Sign out
             </span>
           ) : (
-            <Link className='nav-link' to='/auth'>
+            <Link className="nav-link" to="/auth">
               Sign in
             </Link>
           )}

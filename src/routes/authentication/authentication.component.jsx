@@ -1,15 +1,13 @@
-import SignUpForm from '../../components/sign-up-form/sign-up-form.component';
-import SignInForm from '../../components/sign-in-form/sign-in-form.component';
-
 import './authentication.styles.scss';
+import SignInForm from '../../components/sign-in-form/sign-in-form.component';
+import SignUpForm from '../../components/sign-up-form/sign-up-form.component';
 
-const Authentication = () => {
-  return (
-    <div className='authentication-container'>
-      <SignInForm />
-      <SignUpForm />
-    </div>
-  );
-};
+/* eslint arrow-body-style: ["error", "never"] */
+const Authentication = () => (
+  <div className="authentication-container">
+    <SignInForm />
+    <SignUpForm />
+  </div>
+);
 
 export default Authentication;

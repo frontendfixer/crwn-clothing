@@ -1,13 +1,9 @@
 import { useState } from 'react';
 
-import FormInput from './../form-input/form-input.component';
-import Button from './../button/button.component';
-import {
-  createUserEmailAndPassword,
-  createUserDocumentFromAuth,
-} from './../../utils/firebase/firebase.utils.js';
-
 import './sign-up-form.styles.scss';
+import { createUserEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
+import Button from '../button/button.component';
+import FormInput from '../form-input/form-input.component';
 
 const defaultFormFields = {
   displayName: '',
@@ -20,7 +16,16 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
-  const handelSubmit = async (event) => {
+  const handelChange = event => {
+    const { name, value } = event.target;
+    setFormFields({ ...formFields, [name]: value });
+  };
+
+  const resetFormFields = () => {
+    setFormFields(defaultFormFields);
+  };
+
+  const handelSubmit = async event => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
@@ -41,22 +46,13 @@ const SignUpForm = () => {
     }
   };
 
-  const handelChange = (event) => {
-    const { name, value } = event.target;
-    setFormFields({ ...formFields, [name]: value });
-  };
-
-  const resetFormFields = () => {
-    setFormFields(defaultFormFields);
-  };
-
   return (
-    <div className='sign-up-container'>
-      <h2>Don't have an account?</h2>
+    <div className="sign-up-container">
+      <h2>Don&apos;t have an account?</h2>
       <span>Sign up with your email and password</span>
       <form onSubmit={handelSubmit}>
         <FormInput
-          label='Display Name'
+          label="Display Name"
           inputOptions={{
             type: 'text',
             onChange: handelChange,
@@ -67,7 +63,7 @@ const SignUpForm = () => {
         />
 
         <FormInput
-          label='Email'
+          label="Email"
           inputOptions={{
             type: 'email',
             onChange: handelChange,
@@ -78,7 +74,7 @@ const SignUpForm = () => {
         />
 
         <FormInput
-          label='Password'
+          label="Password"
           inputOptions={{
             type: 'password',
             onChange: handelChange,
@@ -89,7 +85,7 @@ const SignUpForm = () => {
         />
 
         <FormInput
-          label='Confirm Password'
+          label="Confirm Password"
           inputOptions={{
             type: 'password',
             onChange: handelChange,
@@ -99,7 +95,7 @@ const SignUpForm = () => {
           }}
         />
 
-        <Button type='submit'>Sign Up</Button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </div>
   );

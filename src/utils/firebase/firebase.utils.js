@@ -30,18 +30,13 @@ googleProvider.setCustomParameters({
 
 export const auth = getAuth();
 
-export const signInWithGooglePopup = () =>
-  signInWithPopup(auth, googleProvider);
+export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
 
-export const signInWithGoogleRedirect = () =>
-  signInWithRedirect(auth, googleProvider);
+export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider);
 
 export const db = getFirestore();
 
-export const createUserDocumentFromAuth = async (
-  userAuth,
-  additionalInformation = {}
-) => {
+export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
   const userDocref = doc(db, 'users', userAuth.uid);
   const userSnapshot = await getDoc(userDocref);
 
@@ -57,22 +52,24 @@ export const createUserDocumentFromAuth = async (
         ...additionalInformation,
       });
     } catch (error) {
-      console.log('error creating the user', console.error.message);
+      console.log('error creating the user', error.message);
     }
   }
   return userDocref;
 };
 
 export const createUserEmailAndPassword = async (email, password) => {
-  if (!email || !password) return;
+  if (!email || !password) return {};
 
-  return await createUserWithEmailAndPassword(auth, email, password);
+  const val = await createUserWithEmailAndPassword(auth, email, password);
+  return val;
 };
 
 export const signInUserEmailAndPassword = async (email, password) => {
-  if (!email || !password) return;
+  if (!email || !password) return {};
 
-  return await signInWithEmailAndPassword(auth, email, password);
+  const val = await signInWithEmailAndPassword(auth, email, password);
+  return val;
 };
 
 // export default {
@@ -81,7 +78,7 @@ export const signInUserEmailAndPassword = async (email, password) => {
 //   signInUserEmailAndPassword,
 // };
 
+// eslint-disable-next-line no-return-await
 export const signOutUser = async () => await signOut(auth);
 
-export const onAuthStateChangedListner = (callback) =>
-  onAuthStateChanged(auth, callback);
+export const onAuthStateChangedListner = callback => onAuthStateChanged(auth, callback);

@@ -2,11 +2,14 @@
   "name": "crwn-clothing",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint:eslint": "eslint . --ext .js,.jsx",
+    "fix:eslint": "eslint --fix  . --ext .js,.jsx",
+    "lint:stylelint": "stylelint **/*.{css,scss,jsx}",
+    "fix:stylelint": "stylelint --fix  ./src/**/*.{css, scss,jsx}"
   },
   "dependencies": {
     "firebase": "^9.19.1",
@@ -15,10 +18,30 @@
     "react-router-dom": "^6.10.0"
   },
   "devDependencies": {
+    "@nabla/vite-plugin-eslint": "^1.5.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react": "^3.1.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.38.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "prettier": "^2.8.7",
     "sass": "^1.62.0",
-    "vite": "^4.2.0"
+    "sharp": "^0.32.0",
+    "stylelint": "^15.6.0",
+    "stylelint-config-idiomatic-order": "^9.0.0",
+    "stylelint-config-prettier-scss": "^0.0.1",
+    "stylelint-config-standard-scss": "^8.0.0",
+    "stylelint-scss": "^4.6.0",
+    "svgo": "^3.0.2",
+    "vite": "^4.3.0",
+    "vite-plugin-image-optimizer": "^1.1.3",
+    "vite-plugin-svgr": "^2.4.0"
   }
 }
