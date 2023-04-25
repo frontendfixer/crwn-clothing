@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
 import { useState } from 'react';
 
 import './sign-in-form.styles.scss';
 import {
   signInWithGooglePopup,
   signInUserEmailAndPassword,
-  createUserDocumentFromAuth,
 } from '../../utils/firebase/firebase.utils';
 import Button from '../button/button.component';
 import FormInput from '../form-input/form-input.component';
@@ -18,15 +19,14 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  const signInWithGoogle = async () => await signInWithGooglePopup();
+  const signInWithGoogle = async () => signInWithGooglePopup();
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
 
-  const handelSubmit = async event => {
+  const handelSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const { user } = await signInUserEmailAndPassword(email, password);
 
@@ -46,7 +46,7 @@ const SignInForm = () => {
     }
   };
 
-  const handelChange = event => {
+  const handelChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };

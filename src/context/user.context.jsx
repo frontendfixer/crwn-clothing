@@ -1,6 +1,10 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
 import { createContext, useState, useEffect } from 'react';
 
-import { onAuthStateChangedListner, createUserDocumentFromAuth } from '../utils/firebase/firebase.utils';
+import {
+  onAuthStateChangedListner,
+  createUserDocumentFromAuth,
+} from '../utils/firebase/firebase.utils';
 
 export const UserContext = createContext({
   currentUser: null,
@@ -9,7 +13,6 @@ export const UserContext = createContext({
 
 export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  // eslint-disable-next-line react/jsx-no-constructed-context-values
   const value = { currentUser, setCurrentUser };
 
   useEffect(() => {

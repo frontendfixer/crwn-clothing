@@ -21,6 +21,7 @@ $breakpoints-max: (
   'medium': 62.99em,
   'large': 79.99em,
 ) !default;
+
 @mixin mq-max($breakpoint) {
   @if map-has-key($breakpoints-max, $breakpoint) {
     @media only screen and (max-width: map-get($breakpoints-max, $breakpoint)) {
@@ -28,6 +29,7 @@ $breakpoints-max: (
     }
   }
 }
+
 // Usage:
 
 // .selector {
@@ -50,12 +52,16 @@ $breakpoints-max: (
 }
 
 // ++++++++++++++ REM Functions +++++++++++
-$html-font-size: 16px;
+$html-font-size: 1rem;
+
 @function rem($Value) {
   $remValue: math.div($Value, $html-font-size) + rem;
+
   @return $remValue;
 }
+
 @function em($Value) {
   $remValue: math.div($Value, $html-font-size) + em;
+
   @return $remValue;
 }

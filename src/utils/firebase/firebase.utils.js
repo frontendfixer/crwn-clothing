@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
@@ -23,25 +25,33 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 
+export const auth = getAuth(firebaseApp);
+auth.useDeviceLanguage();
+
+// ============ Google Authentications
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
   prompt: 'select_account',
 });
+export const signInWithGooglePopup = () =>
+  signInWithPopup(auth, googleProvider);
 
-export const auth = getAuth();
+export const signInWithGoogleRedirect = () =>
+  signInWithRedirect(auth, googleProvider);
+//-------------------------------------------
 
-export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
-
-export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider);
-
+// ================= Firestore Setup
 export const db = getFirestore();
 
-export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
+export const createUserDocumentFromAuth = async (
+  userAuth,
+  additionalInformation = {}
+) => {
   const userDocref = doc(db, 'users', userAuth.uid);
   const userSnapshot = await getDoc(userDocref);
 
   if (!userSnapshot.exists()) {
-    const { displayName, email } = userAuth;
+    const { displayName, email, uid } = userAuth;
     const createDate = new Date();
 
     try {
@@ -49,6 +59,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
         displayName,
         email,
         createDate,
+        uid,
         ...additionalInformation,
       });
     } catch (error) {
@@ -58,10 +69,12 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
   return userDocref;
 };
 
+// ========== Emain & Password Authentications
 export const createUserEmailAndPassword = async (email, password) => {
   if (!email || !password) return {};
 
   const val = await createUserWithEmailAndPassword(auth, email, password);
+  console.log(val);
   return val;
 };
 
@@ -69,16 +82,12 @@ export const signInUserEmailAndPassword = async (email, password) => {
   if (!email || !password) return {};
 
   const val = await signInWithEmailAndPassword(auth, email, password);
+  console.log(val);
   return val;
 };
+// ---------------------------------------
 
-// export default {
-//   createUserEmailAndPassword,
-//   createUserDocumentFromAuth,
-//   signInUserEmailAndPassword,
-// };
+export const signOutUser = async () => signOut(auth);
 
-// eslint-disable-next-line no-return-await
-export const signOutUser = async () => await signOut(auth);
-
-export const onAuthStateChangedListner = callback => onAuthStateChanged(auth, callback);
+export const onAuthStateChangedListner = (callback) =>
+  onAuthStateChanged(auth, callback);

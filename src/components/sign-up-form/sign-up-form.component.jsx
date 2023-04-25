@@ -1,7 +1,12 @@
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
 import { useState } from 'react';
 
 import './sign-up-form.styles.scss';
-import { createUserEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
+import {
+  createUserEmailAndPassword,
+  createUserDocumentFromAuth,
+} from '../../utils/firebase/firebase.utils';
 import Button from '../button/button.component';
 import FormInput from '../form-input/form-input.component';
 
@@ -16,7 +21,7 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
-  const handelChange = event => {
+  const handelChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
@@ -25,7 +30,7 @@ const SignUpForm = () => {
     setFormFields(defaultFormFields);
   };
 
-  const handelSubmit = async event => {
+  const handelSubmit = async (event) => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
@@ -37,6 +42,7 @@ const SignUpForm = () => {
       const { user } = await createUserEmailAndPassword(email, password);
 
       await createUserDocumentFromAuth(user, { displayName });
+
       resetFormFields();
     } catch (error) {
       console.log({ error });
@@ -57,6 +63,7 @@ const SignUpForm = () => {
             type: 'text',
             onChange: handelChange,
             name: 'displayName',
+            id: 'display-name',
             value: displayName,
             required: true,
           }}
@@ -68,6 +75,7 @@ const SignUpForm = () => {
             type: 'email',
             onChange: handelChange,
             name: 'email',
+            id: 'email',
             value: email,
             required: true,
           }}
@@ -79,6 +87,7 @@ const SignUpForm = () => {
             type: 'password',
             onChange: handelChange,
             name: 'password',
+            id: 'password',
             value: password,
             required: true,
           }}
@@ -90,6 +99,7 @@ const SignUpForm = () => {
             type: 'password',
             onChange: handelChange,
             name: 'confirmPassword',
+            id: 'confirm-password',
             value: confirmPassword,
             required: true,
           }}
