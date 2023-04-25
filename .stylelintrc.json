@@ -1,52 +1,46 @@
 {
-  "plugins": ["stylelint-scss", "@namics/stylelint-bem"],
+  "plugins": [
+    "stylelint-scss",
+    "@namics/stylelint-bem",
+    "stylelint-color-format",
+    "stylelint-rem-over-px"
+  ],
   "extends": [
+    "stylelint-config-standard",
     "stylelint-config-standard-scss",
-    "stylelint-config-idiomatic-order",
-    "stylelint-config-prettier-scss"
+    "stylelint-config-recess-order"
   ],
   "rules": {
-  "font-family-name-quotes": null,
-   "plugin/stylelint-bem-namics": {
+    "alpha-value-notation": "number",
+    "hue-degree-notation": "number",
+    "font-family-name-quotes": null,
+    "function-calc-no-unspaced-operator": true,
+    "plugin/stylelint-bem-namics": {
       "patternPrefixes": [],
       "helperPrefixes": []
     },
+
+    "color-format/format": {
+      "format": "hsl"
+    },
+
+    "rem-over-px/rem-over-px": true,
+
+    "declaration-property-value-no-unknown": true,
+
     "scss/at-rule-no-unknown": [
       true,
       {
         "ignoreAtRules": ["tailwind", "layer"]
       }
     ],
-    "selector-class-pattern": null
 
+    "selector-class-pattern": null
   },
   "overrides": [
     {
       "customSyntax": "postcss-scss",
-      "files": ["**/*.scss"]
-    },
-    {
-      "customSyntax": "@stylelint/postcss-css-in-js",
-      "files": ["**/*.jsx", "**/*.tsx"],
-      "rules": {
-        "function-name-case": [
-          "lower",
-          {
-            "ignoreFunctions": ["/.*/"]
-          }
-        ],
-        "selector-class-pattern": [
-          "^([a-z][a-z0-9]*)(-[a-z0-9]+)*((__([a-z][a-z0-9]*)(-[a-z0-9]+)*)?(--([a-z][a-z0-9]*)(-[a-z0-9]+)*)?)$"
-        ],
-        "value-keyword-case": [
-          "lower",
-          {
-            "ignoreFunctions": ["/.*/"],
-            "ignoreKeywords": ["/.*/"],
-            "ignoreProperties": ["/.*/"]
-          }
-        ]
-      }
+      "files": ["src/*.scss", "src/**/*.scss"]
     }
   ]
 }

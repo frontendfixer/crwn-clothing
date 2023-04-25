@@ -10,14 +10,18 @@
   "editor.foldingStrategy": "indentation",
   "editor.guides.bracketPairs": "active",
   "editor.mouseWheelZoom": true,
-
-  "explorer.confirmDelete": true,
+  "editor.rename.enablePreview": false,
 
   // ============ Emmit Config ===========
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
     "typescript": "typescriptreact"
   },
-  "emmet.useInlineCompletions": true
-  // "emmet.triggerExpansionOnTab": true,
+  "emmet.useInlineCompletions": true,
+  "emmet.syntaxProfiles": {
+    "jsx": {
+      "attr_quotes": "double"
+    }
+  },
+  "emmet.triggerExpansionOnTab": true
 }
