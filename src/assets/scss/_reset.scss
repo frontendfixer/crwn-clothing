@@ -33,6 +33,12 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
+button {
+  appearance: none;
+  border: none;
+  outline: none;
+}
+
 /* Make images easier to work with */
 img,
 picture,
