@@ -12,6 +12,8 @@
   "editor.mouseWheelZoom": true,
   "editor.rename.enablePreview": false,
 
+  "workbench.editor.enablePreview": false,
+
   // ============ Emmit Config ===========
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",

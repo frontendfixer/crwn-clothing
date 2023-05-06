@@ -1,7 +1,17 @@
 @forward './assets/scss/reset';
 
 body {
-  font-family: 'Playfair Display', serif;
+  font-family: 'IBM Plex Mono', monospace;
+  // font-family: 'PT Serif', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-block-start: 20px;
+  padding-block-end: 40px;
+  padding-inline: 30px;
 }

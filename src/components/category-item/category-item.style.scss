@@ -7,7 +7,6 @@
   align-items: center;
   justify-content: center;
   border: 1px solid black;
-  margin: 0 0.46875rem 0.9375rem;
 
   &:hover {
     cursor: pointer;
@@ -24,14 +23,6 @@
 
   &.large {
     height: 23.75rem;
-  }
-
-  &:first-child {
-    margin-right: 0.46875rem;
-  }
-
-  &:last-child {
-    margin-left: 0.46875rem;
   }
 
   .background-image {

@@ -1,12 +1,11 @@
 .navigation {
   display: flex;
-  width: 96%;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 0.125rem solid hsl(0 0% 91%);
-  margin-block-end: 1.125rem;
+  margin-block-end: 2rem;
   margin-inline: auto;
-  padding-block: 1rem;
+  // padding-block: 1rem;
 
   .logo-container {
     display: flex;
