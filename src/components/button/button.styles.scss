@@ -1,18 +1,22 @@
 .button-container {
   --button-bg: #000;
   --button-fg: #fff;
+  --btn-padding-x: 1.875rem;
+  --btn-padding-y: 0.625rem;
+  --btn-font-size: 0.875rem;
   display: flex;
   justify-content: center;
-  padding: 0.625rem 1.875rem;
+  padding: var(--btn-padding-y) var(--btn-padding-x);
   border: none;
   background-color: var(--button-bg);
   color: var(--button-fg);
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: var(--btn-font-size);
   font-weight: bold;
   line-height: 1.5;
   text-transform: uppercase;
   transition: all 250ms ease-in-out;
+  border: 2px solid transparent;
 
   &:hover {
     border: 2px solid var(--button-bg);
