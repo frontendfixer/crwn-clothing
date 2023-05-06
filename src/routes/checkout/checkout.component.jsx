@@ -6,7 +6,13 @@ import { ReactComponent as Minus } from '../../assets/images/remove.svg';
 import { CartContext } from '../../context/cart.context';
 
 const Checkout = () => {
-  const { cartItems } = useContext(CartContext);
+  const {
+    cartItems,
+    addItemToCart,
+    removeItemToCart,
+    clearItemFromCart,
+    cartTotal,
+  } = useContext(CartContext);
 
   return (
     <div className="checkout__container">
@@ -23,7 +29,13 @@ const Checkout = () => {
           </tr>
         </thead>
         <tbody className="checkout__items">
-          {cartItems.map(({ id, name, price, quantity, imageUrl }) => {
+          {cartItems.map(cartItem => {
+            const { id, name, price, quantity, imageUrl } = cartItem;
+
+            const addCartItemHandler = () => addItemToCart(cartItem);
+            const removeCartItemHandler = () => removeItemToCart(cartItem);
+            const clearCartItemHandler = () => clearItemFromCart(cartItem);
+
             return (
               <tr key={id} className="checkout__item">
                 <td className="checkout__item-image">
@@ -32,20 +44,27 @@ const Checkout = () => {
                 <td className="checkout__item-name">{name}</td>
                 <td className="checkout__item-quantity">
                   <span>
-                    <Minus />
+                    <Minus onClick={removeCartItemHandler} />
                     {quantity}
-                    <Add />
+                    <Add onClick={addCartItemHandler} />
                   </span>
                 </td>
-                <td className="checkout__item-price">{price}</td>
-                <td className="checkout__item-total">{price * quantity}</td>
+                <td className="checkout__item-price">${price}</td>
+                <td className="checkout__item-total">${quantity * price}</td>
                 <td className="checkout__item-remove">
-                  <span>X</span>
+                  {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+                  <span onClick={clearCartItemHandler}>&#10799;</span>
                 </td>
               </tr>
             );
           })}
         </tbody>
+        <tfoot>
+          <tr>
+            <td colSpan="4">Total: </td>
+            <td colSpan="2">${cartTotal}</td>
+          </tr>
+        </tfoot>
       </table>
     </div>
   );

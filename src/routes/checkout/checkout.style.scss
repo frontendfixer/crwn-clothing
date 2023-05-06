@@ -17,7 +17,11 @@
       // text-align: left;
       text-align: center;
     }
-    td {
+    tfoot {
+      font-weight: bold;
+      td:first-child {
+        text-align: right;
+      }
     }
   }
   &__item {
@@ -34,8 +38,7 @@
         align-items: center;
         justify-content: center;
         svg {
-          width: 36px;
-          background-color: #d3d3d3;
+          width: 20px;
           cursor: pointer;
         }
       }
@@ -44,7 +47,7 @@
       span {
         cursor: pointer;
         background-color: #d3d3d3;
-        padding: 10px;
+        padding: 3px 6px;
         border-radius: 3px;
       }
     }
