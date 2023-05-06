@@ -52,5 +52,23 @@
     "name": "Blue Snapback",
     "imageUrl": "https://i.ibb.co/X2VJP2W/blue-snapback.png",
     "price": 16
+  },
+  {
+    "id": 10,
+    "name": "Cowboy Hat",
+    "imageUrl": "https://i.imgur.com/aKPgKpW.jpg",
+    "price": 21
+  },
+  {
+    "id": 11,
+    "name": "Indian Turban",
+    "imageUrl": "https://i.imgur.com/Xk8Xg8N.jpeg",
+    "price": 26
+  },
+  {
+    "id": 12,
+    "name": "Red Cloche",
+    "imageUrl": "https://i.imgur.com/nxuzRub.jpeg",
+    "price": 16
   }
 ]
