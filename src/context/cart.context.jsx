@@ -30,7 +30,7 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
     return cartItems.filter(cartItem => cartItem.id !== cartItemToRemove.id);
   }
 
-  // return back cartitem with maching cart item with reduced quantity
+  // return back cart item with marching cart item with reduced quantity
   return cartItems.map(cartItem =>
     cartItem.id === cartItemToRemove.id
       ? { ...cartItem, quantity: cartItem.quantity - 1 }
@@ -48,7 +48,7 @@ export const CartContext = createContext({
   addItemToCart: () => {},
   removeItemToCart: () => {},
   clearItemFromCart: () => {},
-  cartCout: 0,
+  cartCount: 0,
   cartTotal: 0,
 });
 
@@ -70,11 +70,11 @@ export const CartProvider = ({ children }) => {
     setCartItems(clearCartItem(cartItems, cartItemToClear));
   };
 
-  const [cartCout, setCartCount] = useState(0);
+  const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
-    const totalItemsCout = cartItems.reduce((acc, el) => el.quantity + acc, 0);
-    setCartCount(totalItemsCout);
+    const totalItemsCount = cartItems.reduce((acc, el) => el.quantity + acc, 0);
+    setCartCount(totalItemsCount);
   }, [cartItems]);
 
   useEffect(() => {
@@ -92,7 +92,7 @@ export const CartProvider = ({ children }) => {
     removeItemToCart,
     clearItemFromCart,
     cartItems,
-    cartCout,
+    cartCount,
     cartTotal,
   };
 

@@ -10,13 +10,13 @@ import CartItem from '../cart-item/cart-item.component';
 const CartDropdown = () => {
   const navigate = useNavigate();
 
-  const { cartItems, cartCout, isCartOpen, setIsCartOpen } =
+  const { cartItems, cartCount, isCartOpen, setIsCartOpen } =
     useContext(CartContext);
 
   const { isCheckoutOpen, setIsCheckoutOpen } = useContext(CheckoutContext);
 
   const handelCheckout = () => {
-    if (cartCout) setIsCheckoutOpen(!isCheckoutOpen);
+    if (cartCount) setIsCheckoutOpen(!isCheckoutOpen);
   };
 
   useEffect(() => {

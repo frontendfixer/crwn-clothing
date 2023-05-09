@@ -12,9 +12,11 @@ const ProductCard = ({ product }) => {
   const handelAddToCart = () => addItemToCart(product);
 
   return (
-    <div className="product-card-container">
-      <img src={imageUrl} alt={`${name}`} />
-      <div className="footer">
+    <div className="product-card__container">
+      <div className="product-card__image">
+        <img src={imageUrl} alt={`${name}`} />
+      </div>
+      <div className="product-card__footer">
         <span className="name">{name}</span>
         <span className="price">{price}</span>
       </div>
