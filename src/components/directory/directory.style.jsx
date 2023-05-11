@@ -1,4 +1,6 @@
-.directory-container {
+import styled from 'styled-components';
+
+const DirectoryContainer = styled.div`
   display: flex;
   gap: 1rem;
   width: 100%;
@@ -8,4 +10,6 @@
   @media screen and (min-width: 768px) {
     flex-direction: row;
   }
-}
+`;
+
+export default DirectoryContainer;

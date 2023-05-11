@@ -2,12 +2,12 @@
 /* eslint-disable no-alert */
 import { useState } from 'react';
 
-import './sign-up-form.styles.scss';
+import SignUpContainer from './sign-up-form.styles';
 import {
   createUserEmailAndPassword,
   createUserDocumentFromAuth,
 } from '../../utils/firebase/firebase.utils';
-import Button from '../button/button.component';
+import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 import FormInput from '../form-input/form-input.component';
 
 const defaultFormFields = {
@@ -21,7 +21,7 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
-  const handelChange = (event) => {
+  const handelChange = event => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
@@ -30,7 +30,7 @@ const SignUpForm = () => {
     setFormFields(defaultFormFields);
   };
 
-  const handelSubmit = async (event) => {
+  const handelSubmit = async event => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
@@ -53,7 +53,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="sign-up-container">
+    <SignUpContainer>
       <h2>Don&apos;t have an account?</h2>
       <span>Sign up with your email and password</span>
       <form onSubmit={handelSubmit}>
@@ -105,9 +105,9 @@ const SignUpForm = () => {
           }}
         />
 
-        <Button type="submit">Sign Up</Button>
+        <Button buttonType={BUTTON_TYPE_CLASSES.inverted}>Sign Up</Button>
       </form>
-    </div>
+    </SignUpContainer>
   );
 };
 

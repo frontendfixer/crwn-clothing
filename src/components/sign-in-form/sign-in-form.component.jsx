@@ -2,12 +2,12 @@
 /* eslint-disable no-alert */
 import { useState } from 'react';
 
-import './sign-in-form.styles.scss';
+import { SignInContainer, ButtonGroup } from './sign-in-form.styles';
 import {
   signInWithGooglePopup,
   signInUserEmailAndPassword,
 } from '../../utils/firebase/firebase.utils';
-import Button from '../button/button.component';
+import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 import FormInput from '../form-input/form-input.component';
 
 const defaultFormFields = {
@@ -25,9 +25,10 @@ const SignInForm = () => {
     setFormFields(defaultFormFields);
   };
 
-  const handelSubmit = async (event) => {
+  const handelSubmit = async event => {
     event.preventDefault();
     try {
+      // eslint-disable-next-line no-unused-vars
       const { user } = await signInUserEmailAndPassword(email, password);
 
       resetFormFields();
@@ -46,13 +47,13 @@ const SignInForm = () => {
     }
   };
 
-  const handelChange = (event) => {
+  const handelChange = event => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
 
   return (
-    <div className="sign-in-container">
+    <SignInContainer>
       <h2>Already have an account?</h2>
       <span>Sign in with your email and password</span>
       <form onSubmit={handelSubmit}>
@@ -77,14 +78,17 @@ const SignInForm = () => {
             required: true,
           }}
         />
-        <div className="button-group">
-          <Button type="submit">Sign In</Button>
-          <Button type="button" buttonType="google" onClick={signInWithGoogle}>
+        <ButtonGroup>
+          <Button>Sign In</Button>
+          <Button
+            buttonType={BUTTON_TYPE_CLASSES.google}
+            onClick={signInWithGoogle}
+          >
             Google sign in
           </Button>
-        </div>
+        </ButtonGroup>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 
