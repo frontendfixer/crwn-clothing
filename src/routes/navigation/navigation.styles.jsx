@@ -4,9 +4,12 @@ import styled from 'styled-components';
 export const NavigationContainer = styled.div`
   display: flex;
   width: 100%;
+  max-width: 1440px;
+  padding-inline: 30px;
   align-items: center;
   justify-content: space-between;
-  margin-block-end: 2rem;
+  margin-block-end: 10px;
+  margin-block-start: 20px;
   margin-inline: auto;
 `;
 

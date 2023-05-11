@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import styled from 'styled-components';
 
 import App from './App';
 import { CartProvider } from './context/cart.context';
@@ -10,15 +9,6 @@ import { CheckoutProvider } from './context/checkout.context';
 import { UserProvider } from './context/user.context';
 import './main.scss';
 
-const Container = styled.div`
-  width: 100%;
-  max-width: 1440px;
-  margin-inline: auto;
-  padding-block-start: 20px;
-  padding-block-end: 40px;
-  padding-inline: 30px;
-`;
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -26,9 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <CategoriesProvider>
           <CheckoutProvider>
             <CartProvider>
-              <Container>
-                <App />
-              </Container>
+              <App />
             </CartProvider>
           </CheckoutProvider>
         </CategoriesProvider>
